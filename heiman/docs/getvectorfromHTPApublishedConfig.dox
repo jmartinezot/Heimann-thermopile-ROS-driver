@@ -1,0 +1,7 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~temperatura_mean" : \b [double] Media de la temperatura min: -100.0, default: 32.0, max: 200.0
+- \b "~temperatura_stddev" : \b [double] Desviacion estandar de la temperatura min: 0.0, default: 2.0, max: 10.0
+

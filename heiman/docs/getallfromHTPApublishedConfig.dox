@@ -1,0 +1,19 @@
+\subsubsection parameters ROS parameters
+
+Reads and maintains the following parameters on the ROS server
+
+- \b "~temperatura_mean" : \b [double] Media de la temperatura min: -100.0, default: 32.0, max: 200.0
+- \b "~temperatura_stddev" : \b [double] Desviacion estandar de la temperatura min: 0.0, default: 2.0, max: 10.0
+- \b "~lower_temp_limit" : \b [double] Limite inferior de la temperatura (en Celsius) min: -100.0, default: 25.0, max: 200.0
+- \b "~upper_temp_limit" : \b [double] Limite superior de la temperatura (en Celsius) min: -100.0, default: 45.0, max: 200.0
+- \b "~zoom_temp" : \b [int] Zoom de la imagen de temperaturas min: 1, default: 20, max: 100
+- \b "~threshold_temp" : \b [int] Threshold de las temperaturas (en Celsius) min: -100, default: 32, max: 200
+- \b "~min_size_temp" : \b [int] Tamanyo minimo del blob de las temperaturas min: 1, default: 2000, max: 1000000
+- \b "~max_size_temp" : \b [int] Tamanyo maximo del blob de las temperaturas min: 1, default: 1000000, max: 1000000
+- \b "~lower_evidence_limit" : \b [double] Limite inferior de la evidencia (entre 0 y 1) min: 0.0, default: 0.5, max: 1.0
+- \b "~upper_evidence_limit" : \b [double] Limite superior de la evidencia (entre 0 y 1) min: 0.0, default: 0.5, max: 1.0
+- \b "~zoom_evidence" : \b [int] Zoom de la imagen de evidencias min: 1, default: 20, max: 100
+- \b "~threshold_evidence" : \b [double] Threshold de las evidencias (entre 0 y 1) min: 0.0, default: 0.5, max: 1.0
+- \b "~min_size_evidence" : \b [int] Tamanyo minimo del blob de las evidencias min: 1, default: 2000, max: 1000000
+- \b "~max_size_evidence" : \b [int] Tamanyo maximo del blob de las evidencias min: 1, default: 1000000, max: 1000000
+

@@ -1,0 +1,49 @@
+<package>
+  <name>heiman</name>
+  <version>0.1.0</version>
+
+  <description>heiman termopile driver</description>
+  <maintainer email="josemariamartinez@tekniker.es">Jose Maria Martinez Otzeta</maintainer>
+  <author email="josemariamartinez@tekniker.es">Jose Maria Martinez Otzeta</author>
+  <license>BSD</license>
+
+  <url type="website">http://ros.org/wiki/heiman</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>std_msgs</build_depend>
+  <build_depend>rospy</build_depend>
+  <build_depend>roscpp</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>opencv2</build_depend>
+  <build_depend>cv_bridge</build_depend>
+  <build_depend>image_transport</build_depend>
+  <build_depend>genmsg</build_depend>
+  <build_depend>dynamic_reconfigure</build_depend>
+
+  <run_depend>roscpp</run_depend>
+  <run_depend>rospy</run_depend>
+  <run_depend>std_msgs</run_depend>
+  <run_depend>opencv2</run_depend>
+  <run_depend>genmsg</run_depend>
+  <run_depend>sensor_msgs</run_depend> 
+  <run_depend>cv_bridge</run_depend>
+  <run_depend>image_transport</run_depend> 
+  <run_depend>genmsg</run_depend>
+  <run_depend>dynamic_reconfigure</run_depend>
+
+  <!-- <test_depend>roscpp</test_depend>  -->
+  <!-- <test_depend>rospy</test_depend>  -->
+  <!-- <test_depend>std_msgs</test_depend>  -->
+  <!-- <test_depend>opencv2</test_depend>  -->
+  <!-- <test_depend>sensor_msgs</test_depend>  -->
+  <!-- <test_depend>cv_bridge</test_depend>  -->
+  <!-- <test_depend>image_transport</test_depend>  -->
+  <!-- <test_depend>genmsg</test_depend> -->
+  <!-- <test_depend>dynamic_reconfigure</test_depend> -->
+  
+  <export>
+    <architecture_independent/>
+  </export>
+</package>
+
+

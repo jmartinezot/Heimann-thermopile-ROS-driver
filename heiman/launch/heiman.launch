@@ -1,0 +1,19 @@
+<launch>
+
+<!-- Launch thermopile nodes -->
+<node name="initializeHTPA" pkg="heiman" type="initializeHTPA">
+</node>
+
+<node name="startHTPA" pkg="heiman" type="startHTPA">
+</node>
+
+<node name="publishfromHTPA" pkg="heiman" type="publishfromHTPA">
+</node>
+
+<node name="convertimagefromHTPApublished" pkg="heiman" type="convertimagefromHTPApublished">
+</node>
+
+<node name="showHTPAimage" pkg="heiman" type="showHTPAimage">
+</node>
+
+</launch>

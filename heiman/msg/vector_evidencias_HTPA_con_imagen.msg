@@ -1,0 +1,10 @@
+float32[32] vector_evidencia
+float32[32] vector_angulos_grados
+float32[32] vector_angulos_radianes
+float32 valor_maximo_evidencia
+int32 indice_maximo_evidencia
+float32 grados_maximo_evidencia
+float32 radianes_maximo_evidencia
+float32 temperatura_maximo_evidencia
+float32 gaussian_temperatura_maximo_evidencia
+std_msgs/UInt8MultiArray imagen
