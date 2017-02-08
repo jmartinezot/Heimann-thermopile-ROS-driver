@@ -30,16 +30,6 @@
   <run_depend>image_transport</run_depend> 
   <run_depend>genmsg</run_depend>
   <run_depend>dynamic_reconfigure</run_depend>
-
-  <!-- <test_depend>roscpp</test_depend>  -->
-  <!-- <test_depend>rospy</test_depend>  -->
-  <!-- <test_depend>std_msgs</test_depend>  -->
-  <!-- <test_depend>opencv2</test_depend>  -->
-  <!-- <test_depend>sensor_msgs</test_depend>  -->
-  <!-- <test_depend>cv_bridge</test_depend>  -->
-  <!-- <test_depend>image_transport</test_depend>  -->
-  <!-- <test_depend>genmsg</test_depend> -->
-  <!-- <test_depend>dynamic_reconfigure</test_depend> -->
   
   <export>
     <architecture_independent/>

@@ -1,8 +1,0 @@
-\subsubsection usage Usage
-\verbatim
-<node name="heiman" pkg="heiman" type="heiman">
-  <param name="temperatura_mean" type="double" value="32.0" />
-  <param name="temperatura_stddev" type="double" value="2.0" />
-</node>
-\endverbatim
-

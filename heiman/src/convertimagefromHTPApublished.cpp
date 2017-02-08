@@ -1,7 +1,7 @@
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "std_msgs/UInt8MultiArray.h"
-#include "sensor_msgs/Image.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+#include <std_msgs/UInt8MultiArray.h>
+#include <sensor_msgs/Image.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/times.h>
@@ -9,11 +9,15 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <unistd.h>
-#include "opencv2/imgproc/imgproc.hpp"
+
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+#include <opencv2/core/core.hpp>
+#include <opencv/cv.hpp>
+
 #include <image_transport/image_transport.h>
 #include <opencv/cvwimage.h>
 #include <opencv/highgui.h>
-//#include <cv_bridge/CvBridge.h>
 #include <cv_bridge/cv_bridge.h>
 #include  <sensor_msgs/image_encodings.h>
 
@@ -22,7 +26,7 @@
 
 #include <sstream>
 
-#include "../include/heiman/globals.h"
+#include <heiman/globals.h>
 
 //#define ZOOM 20
 
@@ -247,7 +251,7 @@ int main(int argc, char **argv)
 		cpt->header.stamp = time;
 		cpt->header.frame_id = "image";
 		cpt->encoding = "bgr8";
-		cpt->image = HTPAimage; //HTPAimage;
+		cpt->image = cv::cvarrToMat(HTPAimage); //HTPAimage;
 		//cv::imshow(WINDOW, cpt->image);
 		//cv::waitKey(3);
 		//sensor_msgs::Image msg; //Needs to be ImageConstPtr ???

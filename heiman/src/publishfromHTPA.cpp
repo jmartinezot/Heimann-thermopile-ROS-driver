@@ -1,7 +1,7 @@
-#include "ros/ros.h"
-#include "std_msgs/String.h"
-#include "std_msgs/UInt8MultiArray.h"
-#include "std_msgs/UInt8.h"
+#include <ros/ros.h>
+#include <std_msgs/String.h>
+#include <std_msgs/UInt8MultiArray.h>
+#include <std_msgs/UInt8.h>
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/times.h>
@@ -12,7 +12,7 @@
 
 #include <sstream>
 
-#include "../include/heiman/globals.h"
+#include <heiman/globals.h>
 
 int 
 main(int argc, char **argv)

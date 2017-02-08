@@ -8,4 +8,3 @@
 #define MTU 64000
 
 #endif /* GLOBALS_H_ */
-
