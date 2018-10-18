@@ -1,3 +1,4 @@
+<!-- -->
 <launch>
 
 <!-- Launch thermopile nodes -->
@@ -13,7 +14,8 @@
 <node name="convertimagefromHTPApublished" pkg="heiman" type="convertimagefromHTPApublished">
 </node>
 
-<node name="showHTPAimage" pkg="heiman" type="showHTPAimage">
+<node name="showHTPAimage" pkg="image_view" type="image_view">
+    <remap from="image" to="/HTPAimage" />
 </node>
 
 </launch>

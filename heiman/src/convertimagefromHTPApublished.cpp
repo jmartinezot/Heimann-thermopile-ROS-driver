@@ -188,7 +188,7 @@ void config_callback(heiman::convertimagefromHTPApublishedConfig &config, uint32
     }
 }
 
-static const char WINDOW[] = "HTPA image";
+//static const char WINDOW[] = "HTPA image";
 int main(int argc, char **argv)
 {
 	count_loops = 0;	
@@ -217,7 +217,7 @@ int main(int argc, char **argv)
   server.setCallback(f);   
 
 	ros::Rate loop_rate(10);
-	cv::namedWindow(WINDOW);
+	//cv::namedWindow(WINDOW);
 	while (ros::ok())
 	  {
 			count_loops++;

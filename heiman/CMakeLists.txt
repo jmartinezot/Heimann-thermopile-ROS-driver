@@ -40,11 +40,11 @@ add_dependencies(publishfromHTPA ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EX
 add_dependencies(convertimagefromHTPApublished ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 add_dependencies(showHTPAimage ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
-target_link_libraries(startHTPA ${catkin_LIBRARIES} ${OpenCV_INCLUDE_LIBS})  
-target_link_libraries(initializeHTPA ${catkin_LIBRARIES} ${OpenCV_INCLUDE_LIBS})  
-target_link_libraries(publishfromHTPA ${catkin_LIBRARIES} ${OpenCV_INCLUDE_LIBS}) 
-target_link_libraries(convertimagefromHTPApublished ${catkin_LIBRARIES} ${OpenCV_INCLUDE_LIBS})
-target_link_libraries(showHTPAimage ${catkin_LIBRARIES} ${OpenCV_INCLUDE_LIBS})
+target_link_libraries(startHTPA ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})  
+target_link_libraries(initializeHTPA ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})  
+target_link_libraries(publishfromHTPA ${catkin_LIBRARIES} ${OpenCV_LIBRARIES}) 
+target_link_libraries(convertimagefromHTPApublished ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(showHTPAimage ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
 
 
 
