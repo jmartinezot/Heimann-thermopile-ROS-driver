@@ -14,4 +14,8 @@ The process to start working is as follows:
 
 * Right now, we only have an UDP connection sending packages from the port 30444 at 192.168.240.122 (thermopile) to the port 30444 at 192.168.240.1 (computer). The node **publishfromHTPA** publishes the UDP packet as a ROS topic called *HTPAoutput* of type *std_msgs::UInt8MultiArray*.
 
-* The node **convertimagefromHTPApublished** subscribes to the *HTPAoutput* topic and publishes a graphic representation in the topic *HTPAimage* of type *sensor_msgs::Image*.
+* The node **convertimagefromHTPApublished** subscribes to the *HTPAoutput* topic and publishes a graphic representation in the topic *HTPAimage* of type *sensor_msgs::Image*. This image can be customized by rqt_reconfigure calling to ```rosrun rqt_reconfigure rqt_reconfigure```.
+
+* To view the image, just run ```rosrun image_view image_view image:=\HTPAimage```
+
+All these steps can be executed just launching the ```heiman.launch``` file provided in this package.
