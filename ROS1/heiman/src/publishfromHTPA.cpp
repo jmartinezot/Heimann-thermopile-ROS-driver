@@ -24,7 +24,6 @@ main(int argc, char **argv)
   
   ros::Rate loop_rate(20);
   
-  
   int sock; // the socket to communicate with the device
   //int port_number; // the port number to communicate with the device
   struct sockaddr_in PC_addr; // structure of the data on the client side

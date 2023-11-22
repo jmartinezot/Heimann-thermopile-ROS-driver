@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>heiman</name>
+  <version>0.0.1</version>
+  <description>A ROS2 package for Heimann Thermopile</description>
+
+  <maintainer email="your-email@example.com">Your Name</maintainer>
+  <license>Apache 2.0</license>
+
+  <url type="website">http://example.com</url>
+  <url type="repository">http://example.com/repo</url>
+  <url type="bugtracker">http://example.com/bugs</url>
+
+  <author email="your-email@example.com">Your Name</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <depend>rclcpp</depend>
+  <depend>std_msgs</depend>
+
+  <!-- Uncomment the following lines if your package has services, actions, or custom messages -->
+  <!-- <depend>builtin_interfaces</depend> -->
+  <!-- <depend>rosidl_default_generators</depend> -->
+  <!-- <depend>rosidl_default_runtime</depend> -->
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
+
+

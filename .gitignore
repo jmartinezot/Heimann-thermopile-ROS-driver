@@ -7,3 +7,5 @@ devel/
 install/
 # Ignore backup files
 *~
+# Ignore log directories
+log/
