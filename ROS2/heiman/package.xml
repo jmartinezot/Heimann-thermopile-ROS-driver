@@ -17,6 +17,8 @@
 
   <depend>rclcpp</depend>
   <depend>std_msgs</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
 
   <!-- Uncomment the following lines if your package has services, actions, or custom messages -->
   <!-- <depend>builtin_interfaces</depend> -->

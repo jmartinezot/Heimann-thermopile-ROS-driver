@@ -58,41 +58,83 @@ private:
 
     bool initialize_htpa()
     {
-        char text[50];
-        strcpy(text, "Bind HTPA series device");
+        bool connected = false;
+        int attempt = 0;
+        const int max_attempts = 5;  // Maximum number of attempts
+        const int retry_interval_ms = 1000;  // Time between retries in milliseconds
 
-        int bytes_sent = sendto(sock_, text, strlen(text), 0, (struct sockaddr *)&HTPA_addr_, sizeof(HTPA_addr_));
-        close(sock_);
+        while (!connected && attempt < max_attempts)
+        {
+            char text[50];
+            strcpy(text, "Bind HTPA series device");
 
-        return bytes_sent != -1;
+            int bytes_sent = sendto(sock_, text, strlen(text), 0, (struct sockaddr *)&HTPA_addr_, sizeof(HTPA_addr_));
+            if (bytes_sent != -1)
+            {
+                // Optionally, check for a response from the device here
+
+                connected = true;
+            }
+            else
+            {
+                RCLCPP_ERROR(this->get_logger(), "Failed to send message, retrying...");
+                std::this_thread::sleep_for(std::chrono::milliseconds(retry_interval_ms));
+            }
+
+            attempt++;
+        }
+
+        if (!connected) {
+            RCLCPP_ERROR(this->get_logger(), "Failed to connect after %d attempts.", max_attempts);
+        }
+
+        return connected;
     }
+
 
     bool start_htpa()
     {
-        sock_ = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-
         // Setting up PC address
         memset(&PC_addr_, 0, sizeof(PC_addr_));
         PC_addr_.sin_family = AF_INET;
         PC_addr_.sin_port = htons(PORT_PC);
         PC_addr_.sin_addr.s_addr = inet_addr(IP_PC);
 
-        if (bind(sock_, (struct sockaddr *)&PC_addr_, sizeof(PC_addr_)) == -1)
+        bool started = false;
+        int attempt = 0;
+        const int max_attempts = 5;  // Maximum number of attempts
+        const int retry_interval_ms = 1000;  // Time between retries in milliseconds
+
+        while (!started && attempt < max_attempts)
         {
-            perror("Server-bind() error in HTPAControlAndPublishNode");
-            return false;
+            char text = 'K';
+            int bytes_sent = sendto(sock_, &text, 1, 0, (struct sockaddr *)&HTPA_addr_, sizeof(HTPA_addr_));
+            if (bytes_sent != -1)
+            {
+                // Optionally, check for a response from the device here
+
+                started = true;
+            }
+            else
+            {
+                RCLCPP_ERROR(this->get_logger(), "Failed to send start command, retrying...");
+                std::this_thread::sleep_for(std::chrono::milliseconds(retry_interval_ms));
+            }
+
+            attempt++;
         }
 
-        int bytes_sent;
-        char text = 'K';
-        bytes_sent = sendto(sock_, &text, 1, 0, (struct sockaddr *)&HTPA_addr_, sizeof(HTPA_addr_));
-        close(sock_);
+        if (!started) {
+            RCLCPP_ERROR(this->get_logger(), "Failed to start HTPA after %d attempts.", max_attempts);
+        }
 
-        return bytes_sent != -1;
+        return started;
     }
+
 
     void start_publishing()
     {
+        auto self = this->get_node_base_interface();
         HTPAoutput_pub_ = this->create_publisher<std_msgs::msg::UInt8MultiArray>("HTPAoutput", 10);
 
         while (rclcpp::ok())
@@ -114,7 +156,7 @@ private:
                 HTPAoutput_pub_->publish(msg);
             }
 
-            rclcpp::spin_some(shared_from_this());
+            rclcpp::spin_some(self);  // Use the node base interface shared pointer
             std::this_thread::sleep_for(std::chrono::milliseconds(50)); // 20 Hz
             free(stbis);
         }

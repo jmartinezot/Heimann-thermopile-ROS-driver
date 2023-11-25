@@ -9,4 +9,10 @@ def generate_launch_description():
             name='controlandpublishfromHTPA',
             output='screen'
         ),
+        Node(
+            package='heiman',
+            executable='convertimagefromHTPApublished',
+            name='convertimagefromHTPApublished',
+            output='screen'
+        ),
     ])

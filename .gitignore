@@ -9,3 +9,5 @@ install/
 *~
 # Ignore log directories
 log/
+# Ignore Visual Code files
+.vscode/
