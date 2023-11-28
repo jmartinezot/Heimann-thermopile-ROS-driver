@@ -1,4 +1,6 @@
 #include <rclcpp/rclcpp.hpp>
+#include <rclcpp/node_options.hpp>
+#include <rclcpp/parameter.hpp>
 #include <std_msgs/msg/u_int8_multi_array.hpp>
 #include <sensor_msgs/msg/image.hpp>
 #include <opencv2/imgproc.hpp>
@@ -8,11 +10,11 @@
 #include <opencv2/core/core.hpp>
 #include <sstream>
 
-int zoom = 20;
 IplImage *HTPAimage;
-int lower_limit = 25, upper_limit = 30;
-// Global variable to indicate when new data is ready for publishing
 std::atomic<bool> is_new_data_ready(false);
+int zoom;
+int lower_limit;
+int upper_limit;
 
 void convertTtoRGB(int T, int *R, int *G, int *B, int low_limit, int up_limit)
 // convert a tempeature in Kelvin*10 into a RGB value
@@ -88,6 +90,10 @@ void HTPAoutputCallback(const std_msgs::msg::UInt8MultiArray::SharedPtr msg) {
 int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("convertimagefromHTPApublished");
+
+    node->get_parameter("zoom", zoom);
+    node->get_parameter("lower_limit", lower_limit);
+    node->get_parameter("upper_limit", upper_limit);
 
     HTPAimage = cvCreateImage(cvSize(32 * zoom, 31 * zoom), IPL_DEPTH_8U, 3);
 

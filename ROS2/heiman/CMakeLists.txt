@@ -34,15 +34,18 @@ include_directories(include)
 # Declare a C++ executable
 add_executable(controlandpublishfromHTPA src/controlandpublishfromHTPA.cpp)
 add_executable(convertimagefromHTPApublished src/convertimagefromHTPApublished.cpp)
+add_executable(showHTPAimage src/showHTPAimage.cpp)
 
 # Specify libraries to link a library or executable target against
 ament_target_dependencies(controlandpublishfromHTPA rclcpp std_msgs)
 ament_target_dependencies(convertimagefromHTPApublished rclcpp std_msgs sensor_msgs cv_bridge image_transport OpenCV)
+ament_target_dependencies(showHTPAimage rclcpp std_msgs cv_bridge image_transport OpenCV)
 
 # Install executables and/or libraries
 install(TARGETS
   controlandpublishfromHTPA
   convertimagefromHTPApublished
+  showHTPAimage
   DESTINATION lib/${PROJECT_NAME}
 )
 
