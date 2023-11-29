@@ -6,6 +6,8 @@ To connect the PC to the thermopile you need a crossover Ethernet cable that is 
 
 The thermopile uses the port 30444 por all incoming and outcoming communications.
 
+## ROS1 instructions
+
 The process to start working is as follows:
 
 * First an UDP packet has to be sent with the text "Bind HTPA series device". After this, the thermopile is in a command accepting state. The node **initializeHTPA** does this.
@@ -19,3 +21,34 @@ The process to start working is as follows:
 * To view the image, just run ```rosrun image_view image_view image:=\HTPAimage```
 
 All these steps can be executed just launching the ```heiman.launch``` file provided in this package.
+
+## ROS2 instructions
+
+* The process to initialize the thermopile and make it send data is performed by the node **controlandpublishfromHTPA**.
+
+* The data coming from the thermopile is transformed into an image by **convertimagefromHTPApublished**.
+
+* The image is shown on screen by **showHTPAimage**.
+
+The package is compiled going to the ROS2 directory and running
+
+```bash 
+colcon build --packages-select heiman
+```
+
+then
+```bash
+install/setup.bash
+```
+
+and launching the launch file
+
+```bash
+ros2 launch heiman htpa_launch.py
+```
+
+It is possible to change the defaults values of the visualization parameters:
+
+```bash
+ros2 launch heiman htpa_launch.py zoom:=30 lower_limit:=15 upper_limit:=25
+```

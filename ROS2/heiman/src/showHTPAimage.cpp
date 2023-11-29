@@ -2,6 +2,7 @@
 #include "sensor_msgs/msg/image.hpp"
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/opencv.hpp>
+#include <opencv2/imgproc.hpp>
 
 class ImageDisplayNode : public rclcpp::Node {
 public:
@@ -15,7 +16,13 @@ private:
     void image_callback(const sensor_msgs::msg::Image::SharedPtr msg) {
         try {
             cv_bridge::CvImagePtr cv_ptr;
-            cv_ptr = cv_bridge::toCvCopy(msg, "bgr8");
+            cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+
+            if (cv_ptr->image.empty()) {
+                RCLCPP_ERROR(this->get_logger(), "Empty image frame received.");
+                return;
+            }
+
             cv::imshow("HTPA Image", cv_ptr->image);
             cv::waitKey(1);
         } catch (const std::exception& e) {

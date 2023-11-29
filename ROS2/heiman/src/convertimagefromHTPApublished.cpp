@@ -91,9 +91,18 @@ int main(int argc, char **argv) {
     rclcpp::init(argc, argv);
     auto node = rclcpp::Node::make_shared("convertimagefromHTPApublished");
 
+    node->declare_parameter<int>("zoom", 20); // Default value of 20
+    node->declare_parameter<int>("lower_limit", 25); // Default value of 25
+    node->declare_parameter<int>("upper_limit", 35); // Default value of 35
+
+
     node->get_parameter("zoom", zoom);
     node->get_parameter("lower_limit", lower_limit);
     node->get_parameter("upper_limit", upper_limit);
+
+    //zoom = 20;
+    //lower_limit = 25;
+    //upper_limit = 35;
 
     HTPAimage = cvCreateImage(cvSize(32 * zoom, 31 * zoom), IPL_DEPTH_8U, 3);
 
